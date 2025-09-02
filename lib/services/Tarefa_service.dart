@@ -12,6 +12,7 @@ class TarefaService {
     tarefas.add(tarefa01);
     tarefas.add(tarefa02);
     tarefas.add(tarefa03);
+    tarefas.add(tarefa03);
     
 
     return tarefas;
