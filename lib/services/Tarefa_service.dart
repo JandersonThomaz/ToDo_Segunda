@@ -1,4 +1,4 @@
-import 'package:app_segunda/models/Tarefa.dart';
+import 'package:app_segunda/models/tarefa.dart';
 
 class TarefaService {
   List<Tarefa> listarTodas(){
@@ -9,9 +9,9 @@ class TarefaService {
     var tarefa02 = Tarefa(2, "Estudar flutter", "Para não reprovar");
     var tarefa03 = Tarefa(3, "Lavar louça", "Para a louça não ficar suja");
 
+
     tarefas.add(tarefa01);
     tarefas.add(tarefa02);
-    tarefas.add(tarefa03);
     tarefas.add(tarefa03);
     
 
