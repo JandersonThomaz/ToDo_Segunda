@@ -1,6 +1,4 @@
-import 'package:app_segunda/screens/adicionar_task_screen.dart';
 import 'package:app_segunda/screens/home_screen.dart';
-import 'package:app_segunda/services/Tarefa_service.dart';
 import 'package:flutter/material.dart';
 
 void main() {

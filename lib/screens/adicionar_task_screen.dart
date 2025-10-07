@@ -1,3 +1,4 @@
+import 'package:app_segunda/data/tarefa_respository.dart';
 import 'package:app_segunda/models/tarefa.dart';
 import 'package:flutter/material.dart';
 
@@ -30,10 +31,10 @@ class AdicionarTaskScreen extends StatelessWidget {
                 controller: tituloController,
                 maxLength: 20,
                 validator: (valor) {
-                  if(valor == null || valor.isEmpty){
+                  if (valor == null || valor.isEmpty) {
                     return "Escreva um título";
                   }
-                  if(valor.length < 4){
+                  if (valor.length < 4) {
                     return "Digite pelo menos 4 caracteres";
                   }
                   return null;
@@ -48,17 +49,17 @@ class AdicionarTaskScreen extends StatelessWidget {
                   label: Text("Descrição"),
                   border: OutlineInputBorder(),
                   hintText: "Digite a descrição da tarefa",
-                  floatingLabelBehavior: FloatingLabelBehavior.always
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
                 ),
                 minLines: 3,
                 maxLines: 3,
                 maxLength: 140,
                 controller: descricaoController,
-                    validator: (valor) {
-                  if(valor == null || valor.isEmpty){
+                validator: (valor) {
+                  if (valor == null || valor.isEmpty) {
                     return "Escreva uma descrição";
                   }
-                  if(valor.length < 10){
+                  if (valor.length < 10) {
                     return "Digite pelo menos 10 caracteres";
                   }
                   return null;
@@ -66,24 +67,29 @@ class AdicionarTaskScreen extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: (){
-                if(_formKey.currentState!.validate()){
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
                   //Caso esteja valido
-                  Tarefa novaTarefa = Tarefa(0, tituloController.text, descricaoController.text);
-
-                  Navigator.pop(context, novaTarefa);
-
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Tarefa criada com sucesso!"))
+                  Tarefa novaTarefa = Tarefa(
+                    0,
+                    tituloController.text,
+                    descricaoController.text,
                   );
-                }
-                else{
+
+                  TarefaRespository().salvar(novaTarefa);
+
+                  Navigator.pop(context);
+                } else {
                   //Caso não esteja válido
                   ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(content: Text("Faça o preenchimento correto do fomulário!"))
+                    SnackBar(
+                      content: Text(
+                        "Faça o preenchimento correto do fomulário!",
+                      ),
+                    ),
                   );
                 }
-              }, 
+              },
               child: Text("Salvar"),
             ),
           ],

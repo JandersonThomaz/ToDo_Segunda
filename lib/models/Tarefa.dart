@@ -13,5 +13,13 @@ class Tarefa {
   void iniciar(){
     finalizada = false;
   }
+
+  Map<String, Object?> toMap() {
+    return {
+      "nome": nome,
+      "descricao": descricao,
+      "finalizada": finalizada ? 1 : 0
+    };
+  }
   
 }
